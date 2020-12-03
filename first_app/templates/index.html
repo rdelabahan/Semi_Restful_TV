@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semi-Restful TV Shows</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">   
+</head>
+<body>
+    <h1>All Shows</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Network</th>
+            <th>Release Date</th>
+            <th>Actions</th>
+        </tr>
+        {% for show in shows %}
+        <tr>
+            <td>{{show.id}}</td>
+            <td>{{show.title}}</td>
+            <td>{{show.network}}</td>
+            <td>{{ show.release_date }}</td>
+            <td><a class="act" href="/display_show/{{ show.id }}">Show</a> | <a class="act" href="/edit_show/{{ show.id }}">Edit</a> | <a class="act" href="/delete/{{ show.id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a id="add_show" href="/create">Add a New Show</a>
+</body>
+</html>

@@ -1,0 +1,8 @@
+h1 {
+    display: inline-block;
+}
+
+#go_back {
+    display: inline-block;
+    margin-left: 100px;
+}
