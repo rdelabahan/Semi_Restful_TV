@@ -8,15 +8,15 @@ def index(request):
     }
     return render(request,'index.html',context)
 
-def create(request):
+def new(request):
     return render(request,'create.html')
 
-def add_show(request):
+def create(request):
     errors = Show.objects.basic_validator(request.POST)
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect("/create")
+        return redirect("/shows/new")
     else:
         new_show = Show.objects.create(
             title = request.POST["title"],
@@ -24,7 +24,7 @@ def add_show(request):
             release_date = request.POST["date"],
             description = request.POST["description"],
         )
-    return redirect(f"/display_show/{new_show.id}")
+    return redirect(f"/shows/{new_show.id}")
 
 def display_show(request, show_id):
     context = {
@@ -35,7 +35,7 @@ def display_show(request, show_id):
 def delete(request, show_id):
     del_show = Show.objects.get(id = show_id)
     del_show.delete()
-    return redirect("/")
+    return redirect("/shows")
 
 def edit(request, show_id):
     context = {
@@ -48,7 +48,7 @@ def update(request, show_id):
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect(f"/edit_show/{show_id}")
+        return redirect(f"/shows/{show_id}/edit")
     else:
         updated_show = Show.objects.get(id = show_id)
         updated_show.title = request.POST["title"]
@@ -56,4 +56,4 @@ def update(request, show_id):
         updated_show.release_date = request.POST["date"]
         updated_show.description = request.POST["description"]
         updated_show.save()
-        return redirect(f"/display_show/{show_id}")
+        return redirect(f"/shows/{show_id}")

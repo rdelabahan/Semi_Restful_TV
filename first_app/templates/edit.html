@@ -10,7 +10,7 @@
 <body>
     <div>
     <h1>Edit Show {{ show.id }}</h1>
-    <a href="/">Go Back</a>
+    <a href="/shows">Go Back</a>
     </div>
     {% if messages %}
     <div id="error_edit">
@@ -21,7 +21,7 @@
         </ul>
     </div>  
     {% endif %}
-    <form action="/update_show/{{ show.id }}" method="post">
+    <form action="/shows/{{ show.id }}/update" method="post">
         {% csrf_token %}
         <h2>Title</h2>  
         <input type="text" name="title" value="{{ show.title }}"><br><br>
@@ -32,7 +32,7 @@
         <h2>Description</h2>
         <textarea rows="4" cols="50" id="description" name="description">{{ show.description }}</textarea><br><br>
         <input type="submit" id="b1" value="Update">
-        <a id="show" href="/display_show/{{ show.id }}">Go to Show</a>
+        <a id="show" href="/shows/{{ show.id }}">Go to Show</a>
     </form>
 </body>
 </html>

@@ -10,7 +10,7 @@
 <body>
     <div>
     <h1>Add a New Show</h1>
-    <a href="/">Go Back</a>
+    <a href="/shows">Go Back</a>
     </div>
     {% if messages %}
     <div id="error">
@@ -21,7 +21,7 @@
         </ul>
     </div>  
     {% endif %}
-    <form action="/create_show" method="post">
+    <form action="/shows/create" method="post">
         {% csrf_token %}
         <h2>Title</h2>  
         <input type="text" name="title"><br><br>

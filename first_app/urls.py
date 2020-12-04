@@ -3,12 +3,12 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
+    path('new', views.new),
     path('create', views.create),
-    path('create_show', views.add_show),
-    path('display_show/<int:show_id>', views.display_show),
-    path('delete/<int:show_id>', views.delete),
-    path('edit_show/<int:show_id>', views.edit),
-    path('update_show/<int:show_id>', views.update),
+    path('<int:show_id>', views.display_show),
+    path('<int:show_id>/delete', views.delete),
+    path('<int:show_id>/edit', views.edit),
+    path('<int:show_id>/update', views.update),
 ]
 
 

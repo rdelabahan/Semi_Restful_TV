@@ -23,10 +23,10 @@
             <td>{{show.title}}</td>
             <td>{{show.network}}</td>
             <td>{{ show.release_date }}</td>
-            <td><a class="act" href="/display_show/{{ show.id }}">Show</a> | <a class="act" href="/edit_show/{{ show.id }}">Edit</a> | <a class="act" href="/delete/{{ show.id }}">Delete</a></td>
+            <td><a class="act" href="/shows/{{ show.id }}">Show</a> | <a class="act" href="/shows/{{ show.id }}/edit">Edit</a> | <a class="act" href="/shows/{{ show.id }}/delete">Delete</a></td>
         </tr>
         {% endfor %}
     </table>
-    <a id="add_show" href="/create">Add a New Show</a>
+    <a id="add_show" href="/shows/new">Add a New Show</a>
 </body>
 </html>
